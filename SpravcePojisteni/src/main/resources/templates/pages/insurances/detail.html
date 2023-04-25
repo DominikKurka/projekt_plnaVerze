@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+    <div id="centrovac">
+        <section>
+            <table class="seznamKlientu">
+                <thead>
+                <tr>
+                    <th>Druh pojištění</th>
+                    <th>Předmět pojištění</th>
+                    <th>Začátek platnosi</th>
+                    <th>Konec platnosti</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td th:text="${insurance.insuranceName}">&nbsp;</td>
+                <td th:text="${insurance.insuranceItem}">&nbsp;</td>
+                <td th:text="${insurance.insuranceStartDate}">&nbsp;</td>
+                <td th:text="${insurance.insuranceEndDate}">&nbsp;</td>
+                </tbody>
+            </table>
+            <h3>-----------------------------------------------------</h3>
+            <a class="button" th:href="@{/insurances}">Zpět na seznam</a>
+        </section>
+    </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

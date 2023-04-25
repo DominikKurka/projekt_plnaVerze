@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+  <div id="centrovac">
+    <section>
+      <table class="seznamKlientu">
+        <thead>
+        <tr>
+          <th>Jméno</th>
+          <th>Příjmení</th>
+          <th>Datum narození</th>
+          <th>Email</th>
+          <th>Adresa</th>
+        </tr>
+        </thead>
+        <tbody>
+          <td th:text="${client.clientName}">&nbsp;</td>
+          <td th:text="${client.clientSurname}">&nbsp;</td>
+          <td th:text="${client.clientDateOfB}">&nbsp;</td>
+          <td th:text="${client.clientEmail}">&nbsp;</td>
+          <td th:text="${client.clientAdress}">&nbsp;</td>
+        </tbody>
+      </table>
+      <h3>-----------------------------------------------------</h3>
+        <a class="button" th:href="@{/insurances/create}">Vytvořit pojištění</a>
+        <a class="button" th:href="@{/clients}">Zpět na seznam</a>
+    </section>
+  </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

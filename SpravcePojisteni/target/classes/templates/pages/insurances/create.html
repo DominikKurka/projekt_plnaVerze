@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+    <div id="centrovac">
+        <header>
+            <h1>Nové pojištění</h1>
+        </header>
+
+        <section>
+            <form class="d-flex flex-column gap-2"
+                  method="post"
+                  th:action="@{/insurances/create}"
+                  th:object="${insuranceDTO}">
+                <div class="form-group">
+                    <label for="insuranceName" class="control-label">Druh pojištění</label>
+                    <input id="insuranceName" th:field="*{insuranceName}" class="form-control"/>
+                    <small class="text-danger" th:errors="*{insuranceName}"></small>
+                </div>
+                <div class="form-group">
+                    <label for="insuranceItem" class="control-label">Předmět pojištění</label>
+                    <input id="insuranceItem" th:field="*{insuranceItem}" class="form-control"/>
+                    <small class="text-danger" th:errors="*{insuranceItem}"></small>
+                </div>
+                <div class="form-group">
+                    <label for="insuranceStartDate" class="control-label">Začátek pojištění</label>
+                    <input id="insuranceStartDate" th:field="*{insuranceStartDate}" class="form-control"/>
+                    <small class="text-danger" th:errors="*{insuranceStartDate}"></small>
+                </div>
+                <div class="form-group">
+                    <label for="insuranceEndDate" class="control-label">Konec pojištění</label>
+                    <input id="insuranceEndDate" th:field="*{insuranceEndDate}" class="form-control"/>
+                    <small class="text-danger" th:errors="*{insuranceEndDate}"></small>
+                </div>
+                <button type="submit" class="button">Uložit</button>
+    </div>
+    </form>
+    </section>
+    </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

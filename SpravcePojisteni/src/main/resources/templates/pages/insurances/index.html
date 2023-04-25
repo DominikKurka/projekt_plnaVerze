@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+  <div id="centrovac">
+    <header>
+      <h1>Seznam pojištění</h1>
+    </header>
+
+    <section>
+      <p>
+        <a class="button" th:href="@{/insurances/create}">Vytvořit nové pojištění</a>
+      </p>
+
+      <table class="seznamKlientu">
+        <thead>
+        <tr>
+          <th>Jméno</th>
+          <th>Příjmení</th>
+          <th>Začátek platnosti</th>
+          <th>Možnosti</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="insurance : ${insurances}">
+          <td th:text="${insurance.insuranceName}">&nbsp;</td>
+          <td th:text="${insurance.insuranceItem}"></td>
+          <td th:text="${insurance.insuranceStartDate}">&nbsp;</td>
+          <td>
+            <a th:href="@{'/insurances/' + ${insurance.insuranceId}}">Detail</a>
+            <a th:href="@{'/insurances/edit/' + ${insurance.insuranceId}}">Editovat</a> |
+            <a th:href="@{'/insurances/delete/' + ${insurance.insuranceId}}">Odstranit</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+  <div id="centrovac">
+    <header>
+      <h1>Seznam klientů</h1>
+    </header>
+
+    <section>
+      <p>
+        <a class="button" th:href="@{/clients/create}">Přidat klienta</a>
+      </p>
+
+      <table class="seznamKlientu">
+        <thead>
+        <tr>
+          <th>Jméno</th>
+          <th>Příjmení</th>
+          <th>Datum narození</th>
+          <th>Možnosti</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}">
+          <td th:text="${client.clientName}">&nbsp;</td>
+          <td th:text="${client.clientSurname}"></td>
+          <td th:text="${client.clientDateOfB}">&nbsp;</td>
+          <td>
+            <a th:href="@{'/clients/' + ${client.clientId}}">Detail</a>
+            <a th:href="@{'/clients/edit/' + ${client.clientId}}">Editovat</a> |
+            <a th:href="@{'/clients/delete/' + ${client.clientId}}">Odstranit</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</body>
+
+</html>
